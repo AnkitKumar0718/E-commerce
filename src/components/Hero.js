@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Hero() {
   return (
-    <section className='bg-orange-100 h-[500px] bg-cover 
+    <section className='bg-orange-100 min-h-screen bg-cover 
     bg-no-repeat bg-center py-24'>
       <div className='container mx-auto flex justify-around h-full '>
         <div className='flex flex-col justify-center mx-4'>
@@ -25,7 +25,7 @@ function Hero() {
         </div>
 
         <div className='hidden md:block my-4' style={{ marginRight: '2rem' }}>
-          <img className='h-[400px] w-[380px] ' style={{ marginTop: '-2rem' }} src={Women} alt='' />
+          <img className='h-[600px] w-[480px] ' style={{ marginTop: '0rem' }} src={Women} alt='' />
         </div>
       </div>
     </section>

@@ -22,7 +22,7 @@ function Wishlist() {
 
   if (wishlist.length === 0) {
     return (
-      <section className='py-20 px-4 pt-[100px]'>
+      <section className='py-20 px-4 pt-[100px] min-h-screen flex justify-center items-center'>
         <div className='container mx-auto text-center'>
           <h1 className='text-4xl font-bold mb-4'>My Wishlist</h1>
           <p className='text-gray-600 text-lg mb-8'>Your wishlist is empty</p>
