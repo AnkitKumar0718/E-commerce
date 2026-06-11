@@ -4,59 +4,67 @@ import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
 import { CartContext } from '../contexts/CartContext';
 import { SidebarContext } from '../contexts/SidebarContext';
 
-function Cartitem({ item }) {
+function CartItem({ item }) {
   const { removeFromCart, increaseAmount, decreaseAmount } = useContext(CartContext);
   const { handleClose } = useContext(SidebarContext);
   const { id, title, amount, image, price } = item;
 
   return (
-    <div className='flex gap-x-4 py-2 lg:px-6 border-b 
-    border-gray-200 w-full font-light  text-gray-500'>
-      <div className='w-full min-h-[130px] flex items-center gap-x-4'>
-        { }
-        <Link to={`/product/${id}`} onClick={handleClose}>
-          <img className='max-w-[60px]' src={image} alt="" />
-        </Link>
+    <div className="flex gap-4 px-6 py-4 hover:bg-cream/50 transition-colors duration-200">
+      {/* Image */}
+      <Link to={`/product/${id}`} onClick={handleClose} className="flex-shrink-0">
+        <div className="w-16 h-16 bg-cream flex items-center justify-center border border-cream-3">
+          <img className="w-12 h-12 object-contain" src={image} alt={title} />
+        </div>
+      </Link>
 
-        <div className='w-full flex flex-col'>
-          { }
-          <div className='flex justify-between mb-2 cursor-pointer'>
-            <Link to={`/product/${id}`} onClick={handleClose} className='text-sm uppercase
-            font-medium max-w-[240px] text-primary hover:underline'>
-              {title}
-            </Link>
+      {/* Info */}
+      <div className="flex-grow min-w-0 flex flex-col gap-2">
+        <div className="flex items-start justify-between gap-2">
+          <Link
+            to={`/product/${id}`}
+            onClick={handleClose}
+            className="text-xs font-semibold text-primary hover:text-gold transition-colors line-clamp-2 leading-snug flex-1"
+          >
+            {title}
+          </Link>
+          <button
+            onClick={() => removeFromCart(id)}
+            className="flex-shrink-0 w-5 h-5 flex items-center justify-center text-muted-2 hover:text-rose-500 hover:bg-rose-50 transition-all"
+          >
+            <IoMdClose className="text-sm" />
+          </button>
+        </div>
 
-            <div onClick={() => removeFromCart(id)}>
-              <IoMdClose className='text-white hover:bg-red-600 transition text-xl bg-red-400' />
-            </div>
+        <div className="flex items-center justify-between">
+          {/* Qty controls */}
+          <div className="flex items-center border border-cream-3">
+            <button
+              onClick={() => decreaseAmount(id)}
+              className="w-7 h-7 flex items-center justify-center text-muted hover:bg-cream hover:text-primary transition-all"
+            >
+              <IoMdRemove className="text-xs" />
+            </button>
+            <span className="w-8 text-center text-xs font-bold text-primary border-x border-cream-3 h-7 flex items-center justify-center">
+              {amount}
+            </span>
+            <button
+              onClick={() => increaseAmount(id)}
+              className="w-7 h-7 flex items-center justify-center text-muted hover:bg-gold-light hover:text-gold transition-all"
+            >
+              <IoMdAdd className="text-xs" />
+            </button>
           </div>
-          <div className=' flex gap-x-2 h-[36px] text-sm'>
-            <div className=' flex flex-1 max-w-[100px] 
-            items-center h-full border text-primary font-medium'>
 
-              <div onClick={() => decreaseAmount(id)} className='flex-1 flex justify-center items-center
-              cursor-pointer bg-yellow-400 h-full'>
-                <IoMdRemove />
-              </div>
-              <div className='h-full flex justify-center 
-              items-center px-2'>{amount}</div>
-              <div onClick={() => increaseAmount(id)} className='flex-1 h-full flex justify-center items-center
-              cursor-pointer bg-blue-500 h-full'>
-                <IoMdAdd />
-              </div>
-            </div>
-            <div className='flex-1 justify-around items-center' x>
-              ${price}</div>
-            <div className=' flex flex-1 justify-end 
-            items-center text-primary font-medium'>
-              {`$ ${item.price && item.amount ? parseFloat(item.price * item.amount).toFixed(2) : '0.00'}`}</div>
+          {/* Price */}
+          <div className="text-right">
+            <p className="text-xs text-muted-2">${price} × {amount}</p>
+            <p className="text-sm font-black text-gold">${(price * amount).toFixed(2)}</p>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Cartitem
-
-
+export default CartItem;

@@ -6,27 +6,25 @@ function CategoryFilter() {
 
   const categories = [
     'All',
-    "electronics",
-    "jewelery",
+    'electronics',
+    'jewelery',
     "men's clothing",
     "women's clothing",
   ];
 
   return (
-    <div className="flex items-center">
-      <select
-        value={selectedCategory}
-        onChange={(e) => setSelectedCategory(e.target.value)}
-        className="px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-red-500 bg-white text-sm"
-      >
-        <option value="All">All Categories</option>
-        {categories.filter(c => c !== 'All').map((category) => (
-          <option key={category} value={category}>
-            {category.charAt(0).toUpperCase() + category.slice(1)}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select
+      value={selectedCategory}
+      onChange={(e) => setSelectedCategory(e.target.value)}
+      className="py-2 px-3 bg-white border border-cream-3 text-primary text-sm focus:outline-none focus:border-gold transition-all duration-200 appearance-none cursor-pointer min-w-[150px]"
+    >
+      <option value="All">All Categories</option>
+      {categories.filter(c => c !== 'All').map((cat) => (
+        <option key={cat} value={cat}>
+          {cat.charAt(0).toUpperCase() + cat.slice(1)}
+        </option>
+      ))}
+    </select>
   );
 }
 
