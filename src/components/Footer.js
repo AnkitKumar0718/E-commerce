@@ -22,10 +22,17 @@ const Footer = () => {
               Your premium destination for fashion, electronics, jewelry and lifestyle. Quality you can trust, styles you'll love.
             </p>
             <div className="flex items-center gap-3">
-              {[BsInstagram, BsTwitter, BsFacebook, BsPinterest].map((Icon, i) => (
+              {[
+                { Icon: BsInstagram, href: 'https://www.instagram.com' },
+                { Icon: BsTwitter, href: 'https://www.twitter.com' },
+                { Icon: BsFacebook, href: 'https://www.facebook.com' },
+                { Icon: BsPinterest, href: 'https://www.pinterest.com' },
+              ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-9 h-9 border border-white/10 flex items-center justify-center text-gray-400 hover:text-gold hover:border-gold transition-all duration-200"
                 >
                   <Icon className="text-sm" />
@@ -126,9 +133,9 @@ const Footer = () => {
         <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-gray-500 text-xs">© 2026 A-Kart. All rights reserved.</p>
           <div className="flex items-center gap-5 text-xs text-gray-500">
-            <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-gold transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-gold transition-colors">Sitemap</a>
+            <button type="button" className="hover:text-gold transition-colors">Privacy Policy</button>
+            <button type="button" className="hover:text-gold transition-colors">Terms of Service</button>
+            <button type="button" className="hover:text-gold transition-colors">Sitemap</button>
           </div>
         </div>
       </div>
